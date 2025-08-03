@@ -173,34 +173,6 @@ export async function deleteCourse(id) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ... existing code ...
-
 // Users API functions
 export async function getUsers() {
   try {
@@ -280,19 +252,6 @@ export async function blockUser(id) {
   }
 }
 
-// export async function updateUserLastActive(id) {
-//   try {
-//     const res = await fetch(`${BASE_URL}/users/${id}/last-active`, {
-//       method: 'PUT',
-//       headers: getHeaders(),
-//     });
-//     if (!res.ok) throw new Error('Failed to update last active time');
-//     return res.json();
-//   } catch (error) {
-//     console.error('Error updating last active time:', error);
-//     throw error;
-//   }
-// }
 
 // Instructors API functions
 export async function getInstructors() {
@@ -373,19 +332,8 @@ export async function verifyInstructor(id) {
   }
 }
 
-// export async function getInstructorCourses(id) {
-//   try {
-//     const res = await fetch(`${BASE_URL}/instructors/${id}/courses`, {
-//       headers: getHeaders()
-//     });
-//     if (!res.ok) throw new Error('Failed to fetch instructor courses');
-//     return res.json();
-//   } catch (error) {
-//     return handleApiError(error);
-//   }
-// }
 
-// Ye sahi version hai
+
 export async function getInstructorCourses(id) {
   try {
     const res = await fetch(`${BASE_URL}/instructors/${id}/courses`, {
@@ -400,28 +348,7 @@ export async function getInstructorCourses(id) {
 }
 
 
-// export async function getInstructorCourses(id) {
-//   try {
-//     const res = await fetch(`${BASE_URL}/instructors/${id}/courses`, {
-//       headers: getHeaders()
-//     });
-//     if (!res.ok) throw new Error('Failed to fetch instructor courses');
 
-//     const data = await res.json();
-
-//     return data.courses || []; // ✅ Sirf array return karo
-//   } catch (error) {
-//     return handleApiError(error);
-//   }
-// }
-
-
-
-
-
-
-
-// ... existing code ...
 
 // User courses and payment API functions
 export async function getUserEnrolledCourses(id) {
@@ -476,7 +403,7 @@ export async function getUserPaymentHistory(id) {
 
 
 
-// ... existing code ...
+
 // Contact Info API functions using fetch
 
 const API_URL = 'http://localhost:5000/api'; // Or import this if defined elsewhere
@@ -517,7 +444,7 @@ export const updateContactInfo = async (contactInfoData) => {
 
 
 
-// ... existing code ...
+
 
 // Contact Messages API functions
 export const getContacts = async () => {
@@ -628,7 +555,7 @@ export const sendReply = async (id, replyMessage) => {
 
 
 
-// ... existing code ...
+
 
 // About API Functions
 export async function getAbout() {
@@ -660,11 +587,6 @@ export async function updateAbout(data) {
 
 
 
-
-
-
-
-// ... existing code ...
 
 // Payouts API Functions
 export async function getUnpaidPayouts(instructorId) {
@@ -777,21 +699,6 @@ export async function getAllUsersPaymentHistory() {
     throw error;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -48,16 +48,7 @@ const aboutSchema = new mongoose.Schema({
     default: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=400'
   },
   
-//   whoCanBenefitSubtitle: {
-//     type: Array,
-//     default: [
-//       'Professionals upgrading their skills',
-//       'Freelancers looking to boost their income',
-//       'Job seekers preparing for future careers',
-//       'Entrepreneurs who want to learn how to build and grow a business',
-//       'Teachers and institutions who want to bring digital learning to their students'
-//     ]
-//   },
+
 
   technologies: {
     type: Array,

@@ -173,16 +173,6 @@ const EditAbout = () => {
                       />
                     </Form.Group>
                     
-                    {/* <Form.Group className="mb-3">
-                      <Form.Label>Introduction</Form.Label>
-                      <Form.Control 
-                        as="textarea" 
-                        rows={3} 
-                        name="intro" 
-                        value={about.intro || ''} 
-                        onChange={handleChange} 
-                      />
-                    </Form.Group> */}
                     
                     <Form.Group className="mb-3">
                       <Form.Label>Who We Are</Form.Label>
@@ -195,17 +185,7 @@ const EditAbout = () => {
                       />
                     </Form.Group>
                     
-                    {/* <Form.Group className="mb-3">
-                      <Form.Label>What We Do</Form.Label>
-                      <Form.Control 
-                        as="textarea" 
-                        rows={3} 
-                        name="whatWeDo" 
-                        value={about.whatWeDo || ''} 
-                        onChange={handleChange} 
-                      />
-                    </Form.Group>
-                     */}
+             
                     <Form.Group className="mb-3">
                       <Form.Label>Commitment Statement</Form.Label>
                       <Form.Control 
@@ -354,63 +334,7 @@ const EditAbout = () => {
                       )}
                     </Form.Group>
 
-
-
-
-
-
-                    {/* <Form.Group className="mb-3">
-                      <Form.Label>What Makes Us Different</Form.Label>
-                      <Form.Control 
-                        as="textarea" 
-                        rows={3} 
-                        name="whatMakesUsDifferent" 
-                        value={about.whatMakesUsDifferent || ''} 
-                        onChange={handleChange} 
-                      />
-                      {about.whatMakesUsDifferent && (
-                        <div className="mt-2">
-                          <img 
-                            src={about.whatMakesUsDifferentImage} 
-                            alt="What Makes Us Different" 
-                            style={{ maxWidth: '100%', maxHeight: '200px' }} 
-                          />
-                        </div>
-                      )}
-                    </Form.Group> */}
-
-
-
-
-                    {/* <Form.Label>Target Audience</Form.Label>
-                    {about.whoCanBenefitSubtitle && about.whoCanBenefitSubtitle.map((item, index) => (
-                      <Form.Group className="mb-2" key={`audience-${index}`}>
-                        <Form.Control 
-                          type="text" 
-                          value={item} 
-                          onChange={(e) => handleArrayChange('whoCanBenefitSubtitle', index, e.target.value)} 
-                        />
-                      </Form.Group>
-                    ))} */}
-{/*                     
-                    <Form.Group className="mb-3">
-                      <Form.Label>Target Audience Image URL</Form.Label>
-                      <Form.Control 
-                        type="text" 
-                        name="whoBenefitSubtitleImage" 
-                        value={about.whoBenefitSubtitleImage || ''} 
-                        onChange={handleChange} 
-                      />
-                      {about.whoBenefitSubtitleImage && (
-                        <div className="mt-2">
-                          <img 
-                            src={about.whoBenefitSubtitleImage} 
-                            alt="Target Audience" 
-                            style={{ maxWidth: '100%', maxHeight: '200px' }} 
-                          />
-                        </div>
-                      )}
-                    </Form.Group> */}
+             
                   </>
                 )}
                 

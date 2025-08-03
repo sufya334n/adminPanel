@@ -1,90 +1,3 @@
-// import { useState, useEffect } from 'react';
-// import { getUnpaidPayoutsSummary } from '../api';
-// import { useNavigate } from 'react-router-dom';
-// import '../styles/PayoutsSummary.css';
-
-// export default function PayoutsSummary() {
-//   const [payoutSummary, setPayoutSummary] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     fetchPayoutSummary();
-//   }, []);
-
-//   const fetchPayoutSummary = () => {
-//     setLoading(true);
-//     getUnpaidPayoutsSummary()
-//       .then(data => {
-//         setPayoutSummary(data);
-//         setLoading(false);
-//       })
-//       .catch(err => {
-//         console.error('Failed to fetch payout summary:', err);
-//         setError('Failed to load payout summary');
-//         setLoading(false);
-//       });
-//   };
-
-//   const handleInstructorClick = (instructorId) => {
-//     navigate(`/dashboard/instructors`);
-//     // Note: You would need to modify the InstructorsList component to accept a query parameter
-//     // and automatically select the instructor with this ID and open the pending payments tab
-//   };
-
-//   if (loading) return <div className="payout-summary-container">Loading payout summary...</div>;
-//   if (error) return <div className="payout-summary-container error">{error}</div>;
-
-//   return (
-//     <div className="payout-summary-container">
-//       <h3>Pending Instructor Payouts</h3>
-      
-//       {payoutSummary.length === 0 ? (
-//         <p>No pending payouts found.</p>
-//       ) : (
-//         <div className="payout-summary-grid">
-//           {payoutSummary.map(summary => (
-//             <div 
-//               key={summary.instructorId} 
-//               className="payout-summary-card"
-//               onClick={() => handleInstructorClick(summary.instructorId)}
-//             >
-//               <h4>{summary.instructorName}</h4>
-//               <div className="payout-summary-details">
-//                 <p><span>Courses:</span> {summary.courseCount}</p>
-//                 <p><span>Amount:</span> ${summary.totalAmount.toFixed(2)}</p>
-//                 <p><span>Status:</span> <span className="status-pending">{summary.status}</span></p>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       )}
-      
-//       <button className="refresh-btn" onClick={fetchPayoutSummary}>
-//         Refresh
-//       </button>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -323,35 +236,6 @@ const PayoutDetailsModal = ({ payout, onClose }) => {
 
       {loading && <p>Loading...</p>}
 
-      {/* TAB 1: Pending Instructor Payouts */}
-      {/* {activeTab === 'pending' && !loading && (
-        <table className="payouts-table">
-          <thead>
-            <tr>
-              <th>Instructor</th>
-              <th>Courses Sold</th>
-              <th>Total Earnings</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {pending.map((payout) => (
-              <tr key={payout.instructorId}>
-                <td>{payout.instructorName}</td>
-                <td>{payout.courseCount}</td>
-                <td>${payout.totalAmount.toFixed(2)}</td>
-                <td>Pending</td>
-                <td>
-                  <button onClick={() => handleReleasePayment(payout.instructorId)}>
-                    Release Payment
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )} */}
 
 
 {activeTab === 'pending' && !loading && (
@@ -580,15 +464,5 @@ const PayoutDetailsModal = ({ payout, onClose }) => {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
 
 

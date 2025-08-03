@@ -95,63 +95,7 @@ router.get('/unpaid-details/:instructorId', async (req, res) => {
   }
 });
 
-// // Process payout for an instructor
-// router.post('/process/:instructorId', async (req, res) => {
 
-// Get total sales and platform profit for analytics dashboard
-// router.get('/summary', async (req, res) => {
-//   try {
-//     const { range } = req.query;
-//     let paidPayoutFilter = {};
-//     let unpaidPayoutFilter = {};
-//     const now = new Date();
-
-//     // Date filtering logic for paid payouts
-//     switch (range) {
-//       case 'monthly':
-//         paidPayoutFilter = { paidAt: { $gte: new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1)) } };
-//         unpaidPayoutFilter = { createdAt: { $gte: new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1)) } }; // Assuming UnpaidPayout has createdAt
-//         break;
-//       case 'weekly':
-//         const dayOfWeek = now.getUTCDay(); // 0 for Sunday, 1 for Monday
-//         const diff = now.getUTCDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1); // Adjust for Sunday being 0
-//         paidPayoutFilter = { paidAt: { $gte: new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), diff)) } };
-//         unpaidPayoutFilter = { createdAt: { $gte: new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), diff)) } };
-//         break;
-//       case 'daily':
-//         paidPayoutFilter = { paidAt: { $gte: new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())) } };
-//         unpaidPayoutFilter = { createdAt: { $gte: new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())) } };
-//         break;
-//       case 'all':
-//       default:
-//         paidPayoutFilter = {}; // No date filter for 'all' or invalid range
-//         unpaidPayoutFilter = {};
-//         break;
-//     }
-
-//     // Calculate total paid payouts
-//     const paidPayouts = await PaidPayout.find(paidPayoutFilter);
-//     const totalPaidPayouts = paidPayouts.reduce((sum, payout) => sum + payout.amount, 0);
-
-//     // Calculate total unpaid payouts (instructor's share)
-//     const unpaidPayouts = await UnpaidPayout.find(unpaidPayoutFilter).populate('instructorId');
-//     let totalUnpaidPayouts = 0;
-//     unpaidPayouts.forEach(payout => {
-//       if (payout.instructorId) {
-//         const commissionRate = payout.instructorId.commission || 70; // Default to 70%
-//         totalUnpaidPayouts += (payout.amount * commissionRate) / 100;
-//       }
-//     });
-
-//     res.json({
-//       totalPaidPayouts: totalPaidPayouts,
-//       totalUnpaidPayouts: totalUnpaidPayouts,
-//     });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// });
 
 
 
@@ -245,65 +189,7 @@ router.get('/summary', async (req, res) => {
 
 
 
-//   try {
-//     const instructorId = req.params.instructorId;
-    
-//     // Get all unpaid payouts for this instructor
-//     const unpaidPayouts = await UnpaidPayout.find({
-//       instructorId,
-//       paid: false
-//     });
-    
-//     if (unpaidPayouts.length === 0) {
-//       return res.status(404).json({ error: 'No unpaid payouts found for this instructor' });
-//     }
-    
-//     // Get instructor commission rate
-//     const instructor = await Instructor.findById(instructorId);
-//     const commissionRate = instructor.commission || 70; // Default to 70% if not set
-    
-//     // Calculate totals
-//     const totalAmount = unpaidPayouts.reduce((sum, payout) => sum + payout.amount, 0);
-//     const instructorAmount = (totalAmount * commissionRate) / 100;
-//     const platformCut = totalAmount - instructorAmount;
-    
-//     // Create a new PaidPayout record
-//     const paidPayout = new PaidPayout({
-//       unpaidIds: unpaidPayouts.map(payout => payout._id),
-//       amount: totalAmount,
-//       commissionRate,
-//       instructorAmount,
-//       platformCut
-//     });
-    
-//     const savedPaidPayout = await paidPayout.save();
-    
-//     // Create a PayoutBatch record
-//     const payoutBatch = new PayoutBatch({
-//       paidPayoutId: savedPaidPayout._id,
-//       instructorId,
-//       totalPlatformCut: platformCut,
-//       items: unpaidPayouts.map(payout => payout._id)
-//     });
-    
-//     await payoutBatch.save();
-    
-//     // Update all unpaid payouts to paid=true
-//     await UnpaidPayout.updateMany(
-//       { _id: { $in: unpaidPayouts.map(payout => payout._id) } },
-//       { paid: true }
-//     );
-    
-//     res.json({
-//       success: true,
-//       paidPayout: savedPaidPayout,
-//       payoutBatch
-//     });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: 'Server error' });
-//   }
-// });
+
 
 
 // Process payout route
@@ -361,24 +247,7 @@ router.post('/process/:instructorId', async (req, res) => {
 });
 
 
-// Get all paid payouts history
-// router.get('/paid', async (req, res) => {
-//   try {
-//     const paidPayouts = await PaidPayout.find()
-//       .populate({
-//         path: 'unpaidIds',
-//         populate: [
-//           { path: 'instructorId', select: 'name' },
-//           { path: 'courseId', select: 'title' }
-//         ]
-//       });
-    
-//     res.json(paidPayouts);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: 'Server error' });
-//   }
-// });
+
 
 router.get('/paid', async (req, res) => {
   try {
@@ -419,27 +288,6 @@ router.get('/paid', async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
-// // Get payout batches for an instructor
-// router.get('/batches/:instructorId', async (req, res) => {
-//   try {
-//     const batches = await PayoutBatch.find({ instructorId: req.params.instructorId })
-//       .populate('paidPayoutId')
-//       .sort({ payoutAt: -1 });
-    
-//     res.json(batches);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: 'Server error' });
-//   }
-// });
 
 
 
@@ -558,134 +406,7 @@ router.get('/all-payment-history', async (req, res) => {
 
 const moment = require('moment');
 
-// router.get('/summary', async (req, res) => {
-//   const { range = 'all' } = req.query;
-
-//   try {
-//     let startDate;
-//     if (range === 'daily') {
-//       startDate = moment().startOf('day');
-//     } else if (range === 'weekly') {
-//       startDate = moment().startOf('isoWeek');
-//     } else if (range === 'monthly') {
-//       startDate = moment().startOf('month');
-//     }
-
-//     // 1. Total collected payments from users
-//     const users = await User.find({}).select('paymentHistory');
-
-//     let totalCollected = 0;
-
-//     users.forEach(user => {
-//       user.paymentHistory.forEach(payment => {
-//         if (!startDate || moment(payment.date).isSameOrAfter(startDate)) {
-//           totalCollected += payment.amount || 0;
-//         }
-//       });
-//     });
-
-//     // 2. Pending payouts to instructors
-//     const unpaidFilter = startDate ? { paid: false, createdAt: { $gte: startDate.toDate() } } : { paid: false };
-//     const unpaidPayouts = await UnpaidPayout.find(unpaidFilter);
-
-//     const totalUnpaid = unpaidPayouts.reduce((sum, payout) => sum + (payout.amount || 0), 0);
-
-//     // 3. Paid payouts to instructors
-//     const paidFilter = startDate ? { createdAt: { $gte: startDate.toDate() } } : {};
-//     const paidPayouts = await PaidPayout.find(paidFilter);
-
-//     const totalPaidToInstructors = paidPayouts.reduce((sum, payout) => sum + (payout.instructorAmount || 0), 0);
-
-//     // 4. Platform profit = total collected - total instructor cost (paid + unpaid)
-//     const platformProfit = totalCollected/100 - totalPaidToInstructors - totalUnpaid;
-
-//     res.json({
-//       totalCollected,
-//       totalPaidToInstructors,
-//       totalUnpaid,
-//       platformProfit
-//     });
-
-//   } catch (err) {
-//     console.error("Summary error:", err);
-//     res.status(500).json({ error: 'Failed to fetch payout summary' });
-//   }
-// });
-
-
-
-
-
-
-// router.get('/summary', async (req, res) => {
-//   const { range = 'all' } = req.query;
-
-//   try {
-//     let startDate;
-//     if (range === 'daily') {
-//       startDate = moment().startOf('day');
-//     } else if (range === 'weekly') {
-//       startDate = moment().startOf('isoWeek');
-//     } else if (range === 'monthly') {
-//       startDate = moment().startOf('month');
-//     }
-
-//     // === 1. Total Collected from Users ===
-//     const users = await User.find({}).select('paymentHistory');
-//     let totalCollected = 0;
-
-//     users.forEach(user => {
-//       user.paymentHistory.forEach(payment => {
-//         if (!startDate || moment(payment.paidAt).isSameOrAfter(startDate)) {
-//           totalCollected += payment.amount || 0;
-//         }
-//       });
-//     });
-
-//     // === 2. Unpaid Payouts ===
-//     const unpaidFilter = startDate
-//       ? { paid: false, createdAt: { $gte: startDate.toDate() } }
-//       : { paid: false };
-
-//     const unpaidPayouts = await UnpaidPayout.find(unpaidFilter);
-//     const totalUnpaid = unpaidPayouts.reduce(
-//       (sum, p) => sum + (p.amount || 0),
-//       0
-//     );
-
-//     // === 3. Paid Payouts (✅ filter by `paidAt`) ===
-//     const paidFilter = startDate
-//       ? { paidAt: { $gte: startDate.toDate() } }
-//       : {};
-
-//     const paidPayouts = await PaidPayout.find(paidFilter);
-//     const totalPaidToInstructors = paidPayouts.reduce(
-//       (sum, p) => sum + (p.instructorAmount || 0),
-//       0
-//     );
-
-//     // === 4. Platform Profit ===
-//     const total=totalCollected/100;
-//     const platformProfit =
-//       total - totalPaidToInstructors - totalUnpaid;
-
-//     res.json({
-//       total,
-//       totalPaidToInstructors,
-//       totalUnpaid,
-//       platformProfit
-//     });
-
-//   } catch (err) {
-//     console.error("Summary error:", err);
-//     res.status(500).json({ error: 'Failed to fetch payout summary' });
-//   }
-// });
-
-
-
-
-
+// Get payout summary for admin dashboard
 router.get('/summary', async (req, res) => {
   const { range = 'all' } = req.query;
 

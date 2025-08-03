@@ -118,31 +118,7 @@ router.get('/:userId/purchased-courses', async (req, res) => {
 });
 
 
-
-
-
-
-// router.get('/:userId/purchased-courses', async (req, res) => {
-//   const { userId } = req.params;  // User ka ID
-//   try {
-//     const purchasedCourses = await Course.find({ purchasedBy: userId });  // Purchased courses query
-//     res.status(200).json(purchasedCourses);  // Send purchased courses
-//   } catch (error) {
-//     console.error('Error fetching purchased courses:', error);
-//     res.status(500).json({ message: 'Error fetching purchased courses', error: error.message });
-//   }
-// });
-
-
 // Get user's payment history
-
-
-
-
-
-
-
-
 
 router.get('/:id/payment-history', async (req, res) => {
   try {

@@ -70,12 +70,7 @@ router.post('/', async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
-// // Express.js backend (Node.js)
-// app.post('/api/getUsersByIds', async (req, res) => {
-//   const userIds = req.body.ids;
-//   const users = await User.find({ _id: { $in: userIds } }, 'name email'); // Only get name & email
-//   res.json(users);
-// });
+
 
 // Update course
 router.put('/:id', async (req, res) => {

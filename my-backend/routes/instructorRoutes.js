@@ -105,15 +105,8 @@ router.patch('/:id/verify', async (req, res) => {
   }
 });
 
-// /// Get instructor courses
-// router.get('/:id/courses', async (req, res) => {
-//   try {
-//     const courses = await Course.find({ instructorId: req.params.id });
-//     res.json(courses);
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-// });
+
+
 // // GET /api/instructors/:id/courses
 router.get('/:id/courses', async (req, res) => {
   try {
