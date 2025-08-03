@@ -1,0 +1,17 @@
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(70deg, #2f2828 10%, #d4eaff 100%);
+  width: 100vw;
+}
+
+.dashboard-content {
+  flex: 1;
+  /* padding: 20px; */
+  background: linear-gradient(70deg, #ffe0e0 10%, #d4eaff 100%);
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+} 

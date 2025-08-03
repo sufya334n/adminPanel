@@ -1,0 +1,181 @@
+.edit-about-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Page title styling */
+.edit-about-container h1 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  font-size: 28px;
+}
+
+/* Alert messages styling */
+.edit-about-container .alert {
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-about-container .alert-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.edit-about-container .alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* Navigation pills styling */
+.edit-about-container .nav-pills {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  gap: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+.nav-pills button {
+  background-color: white ;
+  color: rgb(8, 8, 122) !important;
+}
+.edit-about-container .nav-pills .btn {
+  margin-bottom: 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: left;
+  padding: 12px 15px;
+  background-color: #f5f5f5;
+}
+
+.edit-about-container .nav-pills .btn-primary {
+  background-color: #3498db;
+  border-color: #3498db;
+  box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
+}
+
+.edit-about-container .nav-pills .btn-outline-primary {
+  color: #3498db;
+  border-color: #d1e6f5;
+}
+
+.edit-about-container .nav-pills .btn-outline-primary:hover {
+  background-color: #eaf5fd;
+  color: #2980b9;
+  border-color: #3498db;
+}
+
+/* Card styling */
+.edit-about-container .card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.edit-about-container .card-body {
+  padding: 25px;
+}
+
+/* Form styling */
+.edit-about-container .form-group {
+  margin-bottom: 20px;
+}
+
+.edit-about-container .form-label {
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.edit-about-container .form-control {
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  padding: 12px 15px;
+  font-size: 15px;
+  transition: all 0.3s;
+  background-color: #f9f9f9;
+}
+
+.edit-about-container .form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+  background-color: #fff;
+  
+}
+
+.edit-about-container textarea.form-control {
+  min-height: 100px;
+}
+
+/* Section headings */
+.edit-about-container h3 {
+  color: #2980b9;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Submit button styling */
+.edit-about-container .btn-primary {
+  background-color: #3498db;
+  border-color: #3498db;
+  padding: 10px 25px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-about-container .btn-primary:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.edit-about-container .btn-primary:disabled {
+  background-color: #95c8ec;
+  border-color: #95c8ec;
+}
+
+/* Image preview styling */
+.edit-about-container .image-preview {
+  margin-top: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-about-container .image-preview img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.edit-about-container .image-preview img:hover {
+  transform: scale(1.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .edit-about-container .nav-pills {
+    margin-bottom: 20px;
+  }
+  
+  .edit-about-container .card-body {
+    padding: 15px;
+  }
+}
